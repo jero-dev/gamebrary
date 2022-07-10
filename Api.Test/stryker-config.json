@@ -1,0 +1,10 @@
+{
+    "stryker-config":
+    {
+        "solution": "../Gamebrary.sln",
+        "project": "Api.csproj",
+        "mutate": ["!**/Program.cs"],
+        "mutation-level": "Advanced",
+        "thresholds": { "high": 90, "low": 80, "break": 75 }
+    }
+}

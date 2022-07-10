@@ -1,14 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gamebrary.Controllers
+namespace Api.Controllers
 {
     [ApiController]
     public class HealthCheckController : ControllerBase
     {
         [HttpGet("health")]
-        public ActionResult HealthCheck()
-        {
-            return Ok("I'm alive!");
-        }
+        public ActionResult HealthCheck() => Ok("I'm alive!");
     }
 }

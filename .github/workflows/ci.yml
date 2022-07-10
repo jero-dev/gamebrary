@@ -1,0 +1,40 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Install SonarScanner for .NET
+      run: dotnet tool install --global dotnet-sonarscanner --version 5.7.1
+    - name: Install Report Generator
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.9
+    - name: Start SonarScanner
+      run: dotnet sonarscanner begin /k:"Gamebrary" /d:sonar.host.url=${{ secrets.SONAR_HOST }} /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.coverageReportPaths="./coverage/SonarQube.xml" /v:0.01
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Run Unit Tests
+      run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+    - name: Generate Report
+      run: reportgenerator "-reports:*/TestResults/*/coverage.cobertura.xml" "-targetdir:coverage" "-reporttypes:SonarQube"
+    - name: Finish SonarScanner
+      run: dotnet sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
+    - name: Run Mutation Tests
+      run: |
+        cd *.Test/
+        dotnet tool restore
+        dotnet stryker
