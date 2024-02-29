@@ -13,7 +13,7 @@
 			"version": "latest",
 			"dockerDashComposeVersion": "latest"
 		}
-	},
+	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -22,7 +22,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "curl -L https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh"
+	// "postCreateCommand": "curl -L https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
