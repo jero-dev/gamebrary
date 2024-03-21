@@ -13,6 +13,18 @@
 			"version": "latest",
 			"dockerDashComposeVersion": "latest"
 		}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.tabSize": 2,
+				"editor.insertSpaces": true
+			},
+			"extensions": [
+				"davidanson.vscode-markdownlint",
+				"streetsidesoftware.code-spell-checker"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
