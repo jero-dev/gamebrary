@@ -12,3 +12,17 @@ updates:
       interval: weekly
       day: sunday
     open-pull-requests-limit: 2
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 2
+
+  - package-ecosystem: "gomod"
+    directory: "/src/"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 2
