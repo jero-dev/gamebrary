@@ -43,7 +43,7 @@ jobs:
       run: go mod tidy
 
     - name: Build API
-      run: go build
+      run: go build ./cmd/main.go
 
     - name: SonarQube Scan
       if: ${{ github.event_name != 'pull_request' }}
