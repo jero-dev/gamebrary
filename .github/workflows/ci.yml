@@ -45,8 +45,7 @@ jobs:
     - name: Build API
       run: go build ./cmd/main.go
 
-    - name: SonarQube Scan
-      if: ${{ github.event_name != 'pull_request' }}
+    - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v2
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
