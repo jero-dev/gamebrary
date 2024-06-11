@@ -25,7 +25,6 @@ jobs:
         working-directory: ./src
 
     steps:
-
       - name: Init repository
         uses: actions/checkout@v4
         with:
